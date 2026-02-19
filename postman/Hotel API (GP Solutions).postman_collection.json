@@ -1,0 +1,193 @@
+{
+  "info": {
+    "_postman_id": "5eb6d661-98f1-4c14-9d92-27442149edde",
+    "name": "Hotel API (GP Solutions)",
+    "description": "Коллекция для тестирования RESTful API приложения по работе с отелями.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43359359",
+    "_collection_link": "https://go.postman.co/collection/43359359-5eb6d661-98f1-4c14-9d92-27442149edde?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "1. GET All Hotels",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8092/property-view/hotels",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8092",
+          "path": [
+            "property-view",
+            "hotels"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. GET Hotel by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8092/property-view/hotels/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8092",
+          "path": [
+            "property-view",
+            "hotels",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. GET Search Hotels (by city)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8092/property-view/search?city=Minsk",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8092",
+          "path": [
+            "property-view",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "city",
+              "value": "Minsk"
+            },
+            {
+              "key": "brand",
+              "value": "Hilton",
+              "disabled": true
+            },
+            {
+              "key": "amenities",
+              "value": "Free WiFi",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. POST Create new Hotel",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"DoubleTree by Hilton Minsk\",\n    \"description\": \"The DoubleTree by Hilton Hotel Minsk offers 193 luxurious rooms in the Belorussian capital and stunning views of Minsk city from the hotel's 20th floor ...\",\n    \"brand\": \"Hilton\",\n    \"address\": {\n        \"houseNumber\": \"9\",\n        \"street\": \"Pobediteley Avenue\",\n        \"city\": \"Minsk\",\n        \"country\": \"Belarus\",\n        \"postCode\": \"220004\"\n    },\n    \"contacts\": {\n        \"phone\": \"+375 17 309-80-00\",\n        \"email\": \"doubletreeminsk.info@hilton.com\"\n    },\n    \"arrivalTime\": {\n        \"checkIn\": \"14:00\",\n        \"checkOut\": \"12:00\"\n    }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8092/property-view/hotels",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8092",
+          "path": [
+            "property-view",
+            "hotels"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. POST Add Amenities to Hotel",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n    \"Free parking\",\n    \"Free WiFi\",\n    \"Non-smoking rooms\",\n    \"Concierge\",\n    \"On-site restaurant\",\n    \"Fitness center\",\n    \"Pet-friendly rooms\",\n    \"Room service\",\n    \"Business center\",\n    \"Meeting rooms\"\n]"
+        },
+        "url": {
+          "raw": "http://localhost:8092/property-view/hotels/1/amenities",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8092",
+          "path": [
+            "property-view",
+            "hotels",
+            "1",
+            "amenities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6. GET Histogram (by amenities)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8092/property-view/histogram/amenities",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8092",
+          "path": [
+            "property-view",
+            "histogram",
+            "amenities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "7. GET Histogram (by city)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8092/property-view/histogram/city",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8092",
+          "path": [
+            "property-view",
+            "histogram",
+            "city"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
