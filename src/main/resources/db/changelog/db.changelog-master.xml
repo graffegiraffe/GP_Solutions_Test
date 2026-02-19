@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+    <changeSet id="1" author="rublevskaya">
+        <createTable tableName="hotels">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true"/></column>
+            <column name="name" type="VARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="description" type="VARCHAR(2000)"/>
+            <column name="brand" type="VARCHAR(255)"/>
+            <column name="house_number" type="VARCHAR(50)"/>
+            <column name="street" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="post_code" type="VARCHAR(50)"/>
+            <column name="phone" type="VARCHAR(50)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="check_in" type="VARCHAR(10)"/>
+            <column name="check_out" type="VARCHAR(10)"/>
+        </createTable>
+
+        <createTable tableName="hotel_amenities">
+            <column name="hotel_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_hotel_amenity" referencedTableName="hotels" referencedColumnNames="id"/>
+            </column>
+            <column name="amenity" type="VARCHAR(255)"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="rublevskaya">
+        <insert tableName="hotels">
+            <column name="name" value="DoubleTree by Hilton Minsk"/>
+            <column name="description" value="The DoubleTree by Hilton Hotel Minsk offers 193 luxurious rooms in the Belorussian capital and stunning views of Minsk city from the hotel's 20th floor ..."/>
+            <column name="brand" value="Hilton"/>
+            <column name="house_number" value="9"/>
+            <column name="street" value="Pobediteley Avenue"/>
+            <column name="city" value="Minsk"/>
+            <column name="country" value="Belarus"/>
+            <column name="post_code" value="220004"/>
+            <column name="phone" value="+375 17 309-80-00"/>
+            <column name="email" value="doubletreeminsk.info@hilton.com"/>
+            <column name="check_in" value="14:00"/>
+            <column name="check_out" value="12:00"/>
+        </insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="1"/><column name="amenity" value="Free parking"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="1"/><column name="amenity" value="Free WiFi"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="1"/><column name="amenity" value="Non-smoking rooms"/></insert>
+    </changeSet>
+
+    <changeSet id="3" author="rublevskaya">
+        <insert tableName="hotels">
+            <column name="name" value="Minsk Marriott Hotel"/>
+            <column name="description" value="Experience a seamless blend of sophisticated style and luxurious comfort at Minsk Marriott Hotel, situated on the Svisloch riverfront."/>
+            <column name="brand" value="Marriott"/>
+            <column name="house_number" value="20"/>
+            <column name="street" value="Pobediteley Avenue"/>
+            <column name="city" value="Minsk"/>
+            <column name="country" value="Belarus"/>
+            <column name="post_code" value="220020"/>
+            <column name="phone" value="+375 17 279-30-00"/>
+            <column name="email" value="minsk.marriott@marriott.com"/>
+            <column name="check_in" value="14:00"/>
+            <column name="check_out" value="12:00"/>
+        </insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="2"/><column name="amenity" value="Free WiFi"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="2"/><column name="amenity" value="Fitness center"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="2"/><column name="amenity" value="Spa"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="2"/><column name="amenity" value="Room service"/></insert>
+
+        <insert tableName="hotels">
+            <column name="name" value="Beijing Hotel Minsk"/>
+            <column name="description" value="A functional and elegant 5-star hotel in the center of Minsk, reflecting the traditions of Chinese hospitality."/>
+            <column name="brand" value="Beijing Hotels"/>
+            <column name="house_number" value="36"/>
+            <column name="street" value="Krasnoarmeyskaya Street"/>
+            <column name="city" value="Minsk"/>
+            <column name="country" value="Belarus"/>
+            <column name="post_code" value="220030"/>
+            <column name="phone" value="+375 17 329-77-77"/>
+            <column name="email" value="info@beijinghotelminsk.com"/>
+            <column name="check_in" value="14:00"/>
+            <column name="check_out" value="12:00"/>
+        </insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="3"/><column name="amenity" value="Free parking"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="3"/><column name="amenity" value="Free WiFi"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="3"/><column name="amenity" value="Pool"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="3"/><column name="amenity" value="Casino"/></insert>
+
+        <insert tableName="hotels">
+            <column name="name" value="The Carlton, Moscow"/>
+            <column name="description" value="Located just off Red Square, The Carlton offers breathtaking views of the Kremlin and unparalleled luxury in the heart of the Russian capital."/>
+            <column name="brand" value="The Carlton"/>
+            <column name="house_number" value="3"/>
+            <column name="street" value="Tverskaya Street"/>
+            <column name="city" value="Moscow"/>
+            <column name="country" value="Russia"/>
+            <column name="post_code" value="125009"/>
+            <column name="phone" value="+7 495 225-88-88"/>
+            <column name="email" value="moscow.info@carlton.com"/>
+            <column name="check_in" value="15:00"/>
+            <column name="check_out" value="12:00"/>
+        </insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="4"/><column name="amenity" value="Free WiFi"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="4"/><column name="amenity" value="Spa"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="4"/><column name="amenity" value="Rooftop bar"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="4"/><column name="amenity" value="Pet-friendly rooms"/></insert>
+
+        <insert tableName="hotels">
+            <column name="name" value="Radisson Collection Hotel, Moscow"/>
+            <column name="description" value="Situated in the legendary Hotel Ukraina building, one of the famous 'Seven Sisters' skyscrapers, offering stunning architecture and river views."/>
+            <column name="brand" value="Radisson Collection"/>
+            <column name="house_number" value="2/1"/>
+            <column name="street" value="Kutuzovsky Avenue"/>
+            <column name="city" value="Moscow"/>
+            <column name="country" value="Russia"/>
+            <column name="post_code" value="121248"/>
+            <column name="phone" value="+7 495 221-55-55"/>
+            <column name="email" value="info.moscow@radissoncollection.com"/>
+            <column name="check_in" value="15:00"/>
+            <column name="check_out" value="12:00"/>
+        </insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="5"/><column name="amenity" value="Free WiFi"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="5"/><column name="amenity" value="Free parking"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="5"/><column name="amenity" value="Fitness center"/></insert>
+        <insert tableName="hotel_amenities"><column name="hotel_id" valueNumeric="5"/><column name="amenity" value="River cruise"/></insert>
+    </changeSet>
+
+</databaseChangeLog>
